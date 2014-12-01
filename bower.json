@@ -1,0 +1,14 @@
+{
+  "name": "pinmeup",
+  "version": "1.0",
+  "dependencies": {
+    "jquery": "latest",
+    "normalize-css": "latest"
+  },
+  "install" : {
+    "path"  : {
+      "js": "public/components/",
+      "css": "public/css"
+    }
+  }
+}
