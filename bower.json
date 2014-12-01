@@ -3,7 +3,8 @@
   "version": "1.0",
   "dependencies": {
     "jquery": "latest",
-    "normalize-css": "latest"
+    "normalize-css": "latest",
+    "bootstrap": "latest"
   },
   "install" : {
     "path"  : {
