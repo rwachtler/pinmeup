@@ -39,6 +39,7 @@
         <p class="pull-right">&copy; 2014 Ramis Wachtler | Michael Stifer | Mario Kurzweil</p>
     </footer>
     </body><!--./body-->
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script>
         var mapElement = document.getElementById("map");
         /*
@@ -59,8 +60,20 @@
             Displays the user position
          */
         function showPosition(position){
-            mapElement.innerHTML = "Latituted: " + position.coords.latitude +
-            "<br> Longitude: "+position.coords.longitude;
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            mapElement.style.height = '400px';
+            latlon = new google.maps.LatLng(latitude, longitude);
+
+            var mapOptions = {
+                center: latlon,
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+            };
+            var map = new google.maps.Map(mapElement, mapOptions);
+            var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
         }
 
         function showError(error){
