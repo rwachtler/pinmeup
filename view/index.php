@@ -24,6 +24,18 @@
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <h1>Facts</h1>
+				
+				<div class="row">
+					<div id="facts">
+						<?php
+							include('../business/business.php');
+						
+							$business = new PinMeUp();
+							
+							echo $business->getPinHtml();
+						?>
+					</div>
+				</div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <h1>Map</h1>
@@ -62,9 +74,27 @@
         function showPosition(position){
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
+			
+			// send AJAX request to save position in the database
+			var pos = { 'lat': latitude, 'lng': longitude };
+			$.post('../business/ajax.position.php', pos, function (data) {
+				// Parse JSON response
+				var resp = $.parseJSON(data);
+				
+				var success = resp.success;
+				var msg = resp.msg;
+				
+				// If operation was successful, new HTML content is displayed, otherwise the error message is shown
+				if (success == 1) {
+					$('#facts').html(msg);
+				} else {
+					alert("An error occurred on the server side: " + msg);
+				}
+			} );
+			
             mapElement.style.height = '400px';
             latlon = new google.maps.LatLng(latitude, longitude);
-
+			
             var mapOptions = {
                 center: latlon,
                 zoom: 14,

@@ -102,26 +102,22 @@
 		}
 		
 		/**
-			Searches the database for a country with the specified iso2 name.
+			Searches the database for a country with the specified iso2 code.
 			If it finds one, the id of the country is returned, otherwise 0.
 		*/
-		public function getCountryIdByName($name) {
+		public function getCountryIdByCode($code) {
 			$country_id = 0;
 		
-			$sql = 'SELECT id FROM countries WHERE iso_2 LIKE ?';
+			$sql = 'SELECT country_id FROM countries WHERE iso2 LIKE ?';
 			
 			$stmt = $this->connection->prepare($sql);
 			
-			if (!$stmt->bind_param('s', $name)) {
+			if (!$stmt->bind_param('s', $code)) {
 				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-				
-				return false;
 			}
 			
 			if (!$stmt->execute()) {
 				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-				
-				return false;
 			}
 			
 			$result = $stmt->get_result();
@@ -130,7 +126,7 @@
 			if ($result->num_rows == 1) {
 				$row = $result->fetch_assoc();
 			
-				$country_id = $row['id'];
+				$country_id = $row['country_id'];
 			}
 			
 			return $country_id;

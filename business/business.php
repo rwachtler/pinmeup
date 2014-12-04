@@ -4,6 +4,9 @@
 	class PinMeUp {
 		private $da = null;
 		
+		// Default country code (when using localhost)
+		private static $DEFAULT_COUNTRY_CODE = "AT";
+		
 		// Link to country flag folder
 		private static $flags = "../public/images/flags/";
 		
@@ -11,27 +14,79 @@
 			$this->da = new DataAccess();
 		}
 		
+		/**
+			Puts together HTML table containing all pins
+		*/
+		public function getPinHtml() {
+			$html = "";
+			
+			// Table heading
+			$html .= "<table border='1' cellpadding='2'>";
+			
+				$html .= "<tr>";
+					$html .= "<th>#</th>";
+					$html .= "<th>Latitude</th>";
+					$html .= "<th>Longitude</th>";
+					$html .= "<th>IP address</th>";
+					$html .= "<th>Country</th>";
+				$html .= "</tr>";
+			
+			// Get all pins
+			$pins = $this->getPins();
+			
+			foreach ($pins as $pin) {
+				$country = $this->getCountryById($pin['fk_country_id']);
+			
+				$flag = "<img src='" . $this->getCountryFlagById($pin['fk_country_id']) . "' title='" . $country['short_name'] . "' />";
+				
+				$html .= "<tr>";
+					$html .= "<td> " . $pin['pin_id'] . " </td>";
+					$html .= "<td> " . $pin['lat'] . " </td>";
+					$html .= "<td> " . $pin['lng'] . " </td>";
+					$html .= "<td> " . $pin['ip_address'] . " </td>";
+					$html .= "<td> " . $flag . "</td>";
+				$html .= "</tr>";
+			}
+			
+			$html .= "</table>";
+			
+			return $html;
+		}
+		
+		/**
+			Reads all pin entries from the database
+		*/
 		public function getPins() {
 			return $this->da->getPins();
 		}
 		
-		public function addPin() {
-			$ip_address = $this->getIpAddress();
-			$lat = 25.1234;
-			$lng = 99.6521;
-			$country_id = $this->getCountryFromIpAddress($ip_address);
-			
-			$this->da->addPin($lat, $lng, $ip_address, $country_id);
+		/**
+			Adds a new pin entry to the database
+		*/
+		public function addPin($lat, $lng, $ip_address, $country_id) {
+			return $this->da->addPin($lat, $lng, $ip_address, $country_id);
 		}
 		
-		public function getCountryIdByName($name) {
-			return $this->da->getCountryIdByName($name);
+		/**
+			Returns the country id of the specified iso2 country code (e.g. "AT" returns the country code for Austria)
+			If the country is not found, the return value is 0
+		*/
+		public function getCountryIdByCode($code) {
+			return $this->da->getCountryIdByCode($code);
 		}
 		
+		/**
+			Returns the whole country database entry for the specified country id as an associative array
+			If the id is not found, an empty array is returned
+		*/
 		public function getCountryById($id) {
 			return $this->da->getCountryById($id);
 		}
 		
+		/**
+			Returns the link to the country flag for the specified country id
+			If the id is not found, an empty string is returned
+		*/
 		public function getCountryFlagById($id) {
 			$flag = "";
 		
@@ -62,20 +117,25 @@
 		}
 		
 		/**
-			Fetches JSON object about the country info
+			Fetches JSON object containing the country info using an external service
 		*/
 		private function getIpInfo($ip) {
-			$details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
-
-			return $details;
+			return json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"), true);
 		}
 		
 		/**
 			Returns the iso2 country code for the specified IP address
 		*/
 		public function getCountryFromIpAddress($ip) {
-			$details = $this->getIpInfo($ip);
+			$localhost = array("127.0.0.1", "::1");
 			
-			return $details['country'];
+			// If localhost, default country code is returned
+			if (in_array($ip, $localhost)) {
+				return self::$DEFAULT_COUNTRY_CODE;
+			} else {
+				$details = $this->getIpInfo($ip);
+			
+				return $details['country'];
+			}
 		}
 	}
