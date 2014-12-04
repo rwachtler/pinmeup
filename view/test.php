@@ -14,10 +14,15 @@
 
 			$business = new PinMeUp();
 			
+			$c = $business->getCountryById(15);
+			print_r($c);
+			
+			echo "<img src='" . $business->getCountryFlagById(15) . "' /><br/>";
+			
+			$business->getIpInfo();
+			
 			// Get all pins as associative array
 			$pins = $business->getPins();
-			
-			print_r($pins);
 		?>
 	</body>
 </html>

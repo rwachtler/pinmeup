@@ -36,7 +36,7 @@
         </div>
     </div>
     <footer class="container">
-        <p class="pull-right">&copy; 2014 Ramis Wachtler | Michael Stifer | Mario Kurzweil</p>
+        <p class="pull-right">&copy; 2014 Ramis Wachtler | Michael Stifter | Mario Kurzweil</p>
     </footer>
     </body><!--./body-->
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>

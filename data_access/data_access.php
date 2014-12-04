@@ -30,26 +30,6 @@
 		public function getPins() {
 			$pins = array();
 			
-			/*
-			// SQL query
-			$sql = 'SELECT * FROM pins WHERE 1=$1';
-			
-			// Prepare statement and bind parameters
-			$stmt = $this->connection->prepare($sql);
-			
-			// Example: bind_param for 1 integer value: "bind_param('i', $i)" - bind_param for 3 strings and 1 double: "bind_param('sssd', $a, $b, $c, $d)"
-			if (!$stmt->bind_param('i', 1)) {
-				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-			}
-			
-			// Execute statement
-			if (!$stmt->execute()) {
-				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-			}
-			
-			$pins = $stmt->get_result();
-			*/
-			
 			$sql = 'SELECT * FROM pins';
 			
 			$result = $this->connection->query($sql);
@@ -69,7 +49,7 @@
 			Adds a new pin to the database
 		*/
 		public function addPin($lat, $lng, $ip_address, $country_id) {
-			$sql = 'INSERT INTO pins (lat, lng, ip_address, fk_country) VALUES (?, ?, ?, ?)';
+			$sql = 'INSERT INTO pins (lat, lng, ip_address, fk_country_id) VALUES (?, ?, ?, ?)';
 			
 			$stmt = $this->connection->prepare($sql);
 			
@@ -89,14 +69,17 @@
 		}
 		
 		/**
-			Adds a new country to the database.
+			Returns the country with the specified id from the database as an associative array.
+			If the country is not found, an empty array is returned.
 		*/
-		public function addCountry($name) {
-			$sql = 'INSERT INTO countries (name) VALUES (?)';
+		public function getCountryById($id) {
+			$country = array();
+			
+			$sql = 'SELECT * FROM countries WHERE country_id LIKE ?';
 			
 			$stmt = $this->connection->prepare($sql);
 			
-			if (!$stmt->bind_param('s', $name)) {
+			if (!$stmt->bind_param('i', $id)) {
 				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 				
 				return false;
@@ -108,17 +91,24 @@
 				return false;
 			}
 			
-			return true;
+			$result = $stmt->get_result();
+			
+			// There should only be one country with the same name in the database
+			if ($result->num_rows == 1) {
+				$country = $result->fetch_assoc();
+			}
+			
+			return $country;
 		}
 		
 		/**
-			Searches the database for a country with the specified name.
+			Searches the database for a country with the specified iso2 name.
 			If it finds one, the id of the country is returned, otherwise 0.
 		*/
-		public function getCountryByName($name) {
+		public function getCountryIdByName($name) {
 			$country_id = 0;
 		
-			$sql = 'SELECT id FROM countries WHERE name LIKE ?';
+			$sql = 'SELECT id FROM countries WHERE iso_2 LIKE ?';
 			
 			$stmt = $this->connection->prepare($sql);
 			
