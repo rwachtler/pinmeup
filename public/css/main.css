@@ -16,3 +16,7 @@ div.content h1 {
 div.content .row {
   padding: 20px 0px 20px 0px;
 }
+
+th, td {
+  padding: 5px;
+}
