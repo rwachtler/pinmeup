@@ -47,6 +47,7 @@
 		
 		/**
 			Adds a new pin to the database
+			If operation was successful, true is returned, otherwise false
 		*/
 		public function addPin($lat, $lng, $ip_address, $country_id) {
 			$sql = 'INSERT INTO pins (lat, lng, ip_address, fk_country_id) VALUES (?, ?, ?, ?)';

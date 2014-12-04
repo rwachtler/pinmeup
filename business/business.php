@@ -10,6 +10,9 @@
 		// Link to country flag folder
 		private static $flags = "../public/images/flags/";
 		
+		// Location for saving marker XML file
+		private static $marker_xml = "../public/xml/markers.xml";
+		
 		public function __construct() {
 			$this->da = new DataAccess();
 		}
@@ -54,6 +57,34 @@
 		}
 		
 		/**
+			Creates a marker xml file containing all markers and its information
+		*/
+		private function createMarkerXmlFile() {
+			// Start XML file, create parent node
+			$dom = new DOMDocument("1.0");
+			
+			$node = $dom->createElement("markers");
+			$parnode = $dom->appendChild($node);
+			
+			// get all pins
+			$pins = $this->getPins();
+			
+			foreach ($pins as $pin) {
+				// Add to XML document node
+				$node = $dom->createElement("marker");
+				$newnode = $parnode->appendChild($node);
+				
+				$newnode->setAttribute("lat", $pin['lat']);
+				$newnode->setAttribute("lng", $pin['lng']);
+				$newnode->setAttribute("ip_address", $pin['ip_address']);
+				$newnode->setAttribute("country_id", $pin['fk_country_id']);
+			}
+			
+			// Save xml file
+			$dom->save(self::$marker_xml);
+		}
+		
+		/**
 			Reads all pin entries from the database
 		*/
 		public function getPins() {
@@ -61,10 +92,15 @@
 		}
 		
 		/**
-			Adds a new pin entry to the database
+			Adds a new pin entry to the database and creates a new markers.xml file
+			If operation was successful, true is returned, otherwise false
 		*/
 		public function addPin($lat, $lng, $ip_address, $country_id) {
-			return $this->da->addPin($lat, $lng, $ip_address, $country_id);
+			$success = $this->da->addPin($lat, $lng, $ip_address, $country_id);
+			
+			$this->createMarkerXmlFile();
+		
+			return $success;
 		}
 		
 		/**
