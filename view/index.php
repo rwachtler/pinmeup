@@ -16,7 +16,7 @@
     <script src="../public/components/bootstrap/bootstrap.js"></script>
 </head>
 
-    <body onload="geoLocate()">
+    <body>
     <div class="header row">
         <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h1>Pin Me Up!</h1>
@@ -77,6 +77,7 @@
         /*
             Set interval for refreshing data
         */
+        window.setInterval(function(){geoLocate();},3000);
         window.setInterval(function(){updateMapPins();},3000);
         /*
             Displays the user position
