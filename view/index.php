@@ -16,7 +16,7 @@
     <script src="../public/components/bootstrap/bootstrap.js"></script>
 </head>
 
-    <body>
+    <body onload="geoLocate()">
     <div class="header row">
         <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h1>Pin Me Up!</h1>
@@ -58,6 +58,7 @@
     <script>
         var mapElement = document.getElementById("map");
         var mapExists = false;
+        var mapGlob;
         /*
             Checks for ability of geolocation feature
                 true - call showPosition function
@@ -76,7 +77,7 @@
         /*
             Set interval for refreshing data
         */
-        window.setInterval(function(){geoLocate();},3000);
+        window.setInterval(function(){updateMapPins();},3000);
         /*
             Displays the user position
          */
@@ -113,11 +114,43 @@
             };
             if(!mapExists){
                 var map = new google.maps.Map(mapElement, mapOptions);
+                mapGlob = map;
                 mapExists = true;
             }
-            var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
-        }
 
+        }
+        /*
+            Sends a GET request and loads the data from markers.xml
+        */
+        function updateMapPins(){
+            req1 = new XMLHttpRequest;
+            req1.onreadystatechange = loadPins;
+            req1.open("GET","../public/xml/markers.xml");
+            req1.send(null);
+        }
+        /*
+           Loads pins from the XML-Response and displays them on the map
+           if request was successful
+         */
+        function loadPins(){
+            var longitude = "";
+            var latitude = "";
+            if(req1.status == 200 && req1.readyState == 4){
+                domDocument = req1.responseXML;
+                markerData = domDocument.getElementsByTagName("marker");
+
+                for(i = 0; i < markerData.length; i++){
+                    longitude = markerData[i].getAttribute("lng");
+                    latitude = markerData[i].getAttribute("lat");
+                    latlon = new google.maps.LatLng(latitude, longitude);
+                    var marker = new google.maps.Marker({position:latlon,map:mapGlob,title:"You are here!"});
+                    marker.setMap(mapGlob);
+                }
+            }
+        }
+        /*
+            Error handling
+         */
         function showError(error){
             switch(error.code){
                 case error.PERMISSION_DENIED:

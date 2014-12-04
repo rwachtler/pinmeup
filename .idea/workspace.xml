@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d15450e-c0f3-40e3-b534-8381c5088278" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data_access/create_table.sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data_access/db_sample/pinmeup.sql" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/business/business.php" afterPath="$PROJECT_DIR$/business/business.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_access/data_access.php" afterPath="$PROJECT_DIR$/data_access/data_access.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/view/index.php" afterPath="$PROJECT_DIR$/view/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.css" afterPath="$PROJECT_DIR$/public/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/main.less" afterPath="$PROJECT_DIR$/public/css/main.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/xml/markers.xml" afterPath="$PROJECT_DIR$/public/xml/markers.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pinmeup.iws" />
@@ -36,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/view/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="2205">
-              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            <state vertical-scroll-proportion="3.1112638" vertical-offset="0" max-vertical-offset="2700">
+              <caret line="151" column="26" selection-start-line="151" selection-start-column="26" selection-end-line="151" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -49,14 +41,14 @@
       <file leaf-file-name="data_access.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_access/data_access.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.6875" vertical-offset="510" max-vertical-offset="2415">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state vertical-scroll-proportion="1.125" vertical-offset="225" max-vertical-offset="2415">
+              <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
               <folding>
-                <marker date="1417714271000" expanded="true" signature="782:800" placeholder="SELECT * FRO..pins..." />
-                <marker date="1417714271000" expanded="true" signature="1309:1351" placeholder="SELECT * FRO..pins..." />
-                <marker date="1417714271000" expanded="true" signature="1771:1845" placeholder="INSERT INTO ..." />
-                <marker date="1417714271000" expanded="true" signature="2471:2518" placeholder="SELECT * FRO..countries..." />
-                <marker date="1417714271000" expanded="true" signature="3298:3348" placeholder="SELECT count..countries..." />
+                <marker date="1417716122000" expanded="true" signature="793:811" placeholder="SELECT * FRO..pins..." />
+                <marker date="1417716122000" expanded="true" signature="1320:1362" placeholder="SELECT * FRO..pins..." />
+                <marker date="1417716122000" expanded="true" signature="1782:1856" placeholder="INSERT INTO ..." />
+                <marker date="1417716122000" expanded="true" signature="2482:2529" placeholder="SELECT * FRO..countries..." />
+                <marker date="1417716122000" expanded="true" signature="3309:3359" placeholder="SELECT count..countries..." />
               </folding>
             </state>
           </provider>
@@ -65,7 +57,7 @@
       <file leaf-file-name="business.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/business/business.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.5" vertical-offset="0" max-vertical-offset="2730">
+            <state vertical-scroll-proportion="17.166666" vertical-offset="952" max-vertical-offset="2730">
               <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding />
             </state>
@@ -82,10 +74,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="markers.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="markers.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/xml/markers.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.019946808" vertical-offset="0" max-vertical-offset="752">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
               <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
               <folding />
             </state>
@@ -113,11 +105,11 @@
         <option value="$PROJECT_DIR$/.bowerrc" />
         <option value="$PROJECT_DIR$/bower.json" />
         <option value="$PROJECT_DIR$/public/css/bootstrap/bootstrap.css" />
-        <option value="$PROJECT_DIR$/view/index.php" />
         <option value="$PROJECT_DIR$/business/business.php" />
-        <option value="$PROJECT_DIR$/data_access/data_access.php" />
         <option value="$PROJECT_DIR$/public/css/main.less" />
         <option value="$PROJECT_DIR$/public/xml/markers.xml" />
+        <option value="$PROJECT_DIR$/data_access/data_access.php" />
+        <option value="$PROJECT_DIR$/view/index.php" />
       </list>
     </option>
   </component>
@@ -363,7 +355,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14855434" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.21369047" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14226191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14226191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901296" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -560,36 +552,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="2205">
-          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_access/data_access.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.6875" vertical-offset="510" max-vertical-offset="2415">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          <folding>
-            <marker date="1417714271000" expanded="true" signature="782:800" placeholder="SELECT * FRO..pins..." />
-            <marker date="1417714271000" expanded="true" signature="1309:1351" placeholder="SELECT * FRO..pins..." />
-            <marker date="1417714271000" expanded="true" signature="1771:1845" placeholder="INSERT INTO ..." />
-            <marker date="1417714271000" expanded="true" signature="2471:2518" placeholder="SELECT * FRO..countries..." />
-            <marker date="1417714271000" expanded="true" signature="3298:3348" placeholder="SELECT count..countries..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/business.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.5" vertical-offset="0" max-vertical-offset="2730">
-          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/main.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.208333" vertical-offset="127" max-vertical-offset="960">
@@ -598,10 +560,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/business/business.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="17.166666" vertical-offset="952" max-vertical-offset="2730">
+          <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/xml/markers.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.019946808" vertical-offset="0" max-vertical-offset="752">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
           <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_access/data_access.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.125" vertical-offset="225" max-vertical-offset="2415">
+          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <marker date="1417716122000" expanded="true" signature="793:811" placeholder="SELECT * FRO..pins..." />
+            <marker date="1417716122000" expanded="true" signature="1320:1362" placeholder="SELECT * FRO..pins..." />
+            <marker date="1417716122000" expanded="true" signature="1782:1856" placeholder="INSERT INTO ..." />
+            <marker date="1417716122000" expanded="true" signature="2482:2529" placeholder="SELECT * FRO..countries..." />
+            <marker date="1417716122000" expanded="true" signature="3309:3359" placeholder="SELECT count..countries..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.1112638" vertical-offset="0" max-vertical-offset="2700">
+          <caret line="151" column="26" selection-start-line="151" selection-start-column="26" selection-end-line="151" selection-end-column="26" />
           <folding />
         </state>
       </provider>
