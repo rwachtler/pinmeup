@@ -1,8 +1,8 @@
 <?php
+
 	class DataAccess {
-		
+
 		private $connection;
-		
 		public function __construct() {
 			// settings to get access to the database
 			$servername = "localhost";
@@ -15,7 +15,7 @@
 			
 			// Check connection
 			if ($this->connection->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
+				die("Connection failed: " . $this->connection->connect_error);
 			}
 			
 			// Set charset to utf8
@@ -48,23 +48,44 @@
 		/**
 			Adds a new pin to the database
 			If operation was successful, true is returned, otherwise false
+		 * Also check if a pin with the same IP already exists, if true - don't add a new pin into the database
 		*/
 		public function addPin($lat, $lng, $ip_address, $country_id) {
-			$sql = 'INSERT INTO pins (lat, lng, ip_address, fk_country_id) VALUES (?, ?, ?, ?)';
-			
-			$stmt = $this->connection->prepare($sql);
-			
-			if (!$stmt->bind_param('ddsi', $lat, $lng, $ip_address, $country_id)) {
-				echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
-				
+
+			$sql = 'SELECT * FROM pins WHERE ip_address LIKE ?';
+			$checkIP = $this->connection->prepare($sql);
+
+			if (!$checkIP->bind_param('s', $ip_address)) {
+				echo "Binding parameters failed: (" . $checkIP->errno . ") " . $checkIP->error;
+
 				return false;
 			}
-			
-			if (!$stmt->execute()) {
-				echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-				
+
+			if (!$checkIP->execute()) {
+				echo "Execute failed: (" . $checkIP->errno . ") " . $checkIP->error;
+
 				return false;
 			}
+			$result = $checkIP->get_result();
+
+			if($result->num_rows == 0){
+				$sql = 'INSERT INTO pins (lat, lng, ip_address, fk_country_id) VALUES (?, ?, ?, ?)';
+				$stmt = $this->connection->prepare($sql);
+
+				if (!$stmt->bind_param('ddsi', $lat, $lng, $ip_address, $country_id)) {
+					echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
+
+					return false;
+				}
+
+				if (!$stmt->execute()) {
+					echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+
+					return false;
+				}
+			}
+
+
 			
 			return true;
 		}

@@ -22,10 +22,10 @@
 		*/
 		public function getPinHtml() {
 			$html = "";
-			
+
 			// Table heading
-			$html .= "<table border='1' cellpadding='2'>";
-			
+			$html .= "<table class='table table-hover'>";
+
 				$html .= "<tr>";
 					$html .= "<th>#</th>";
 					$html .= "<th>Latitude</th>";
@@ -39,8 +39,8 @@
 			
 			foreach ($pins as $pin) {
 				$country = $this->getCountryById($pin['fk_country_id']);
-			
-				$flag = "<img src='" . $this->getCountryFlagById($pin['fk_country_id']) . "' title='" . $country['short_name'] . "' />";
+
+				$flag = "<img src='" . $this->getCountryFlagById($pin['fk_country_id']) . "' title='" . $country['short_name'] . "' alt='".$country['short_name']."' />";
 				
 				$html .= "<tr>";
 					$html .= "<td> " . $pin['pin_id'] . " </td>";
@@ -52,7 +52,7 @@
 			}
 			
 			$html .= "</table>";
-			
+
 			return $html;
 		}
 		

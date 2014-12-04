@@ -4,7 +4,12 @@ body {
   background-color: #d2d7d3;
 }
 body {
-  padding: 30px 0px 0px 10px;
+  padding: 30px 0px 0px 0px;
+}
+@media all and (max-width: 767px) {
+  .row {
+    margin: 0;
+  }
 }
 div.header h1 {
   text-align: center;
@@ -13,10 +18,22 @@ div.header h1 {
 div.content h1 {
   text-align: center;
 }
-div.content .row {
-  padding: 20px 0px 20px 0px;
+div.content table tr,
+div.content table th,
+div.content table td {
+  border-color: #6c7a89;
 }
-
-th, td {
-  padding: 5px;
+@media all and (max-width: 767px) {
+  div.content div.container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+div.content .row {
+  padding: 20px 10px 20px 0px;
+}
+@media all and (max-width: 767px) {
+  div.content .row {
+    padding-right: 0px;
+  }
 }

@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Pin Me Up!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../public/css/normalize-css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../public/css/bootstrap/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="../public/css/main.css">
@@ -14,7 +16,7 @@
     <script src="../public/components/bootstrap/bootstrap.js"></script>
 </head>
 
-    <body onload="geoLocate()">
+    <body>
     <div class="header row">
         <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <h1>Pin Me Up!</h1>
@@ -26,7 +28,7 @@
                 <h1>Facts</h1>
 				
 				<div class="row">
-					<div id="facts">
+					<div class="table-responsive" id="facts">
 						<?php
 							include('../business/business.php');
 						
@@ -34,6 +36,7 @@
 							
 							echo $business->getPinHtml();
 						?>
+
 					</div>
 				</div>
             </div>
@@ -54,6 +57,7 @@
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script>
         var mapElement = document.getElementById("map");
+        var mapExists = false;
         /*
             Checks for ability of geolocation feature
                 true - call showPosition function
@@ -68,13 +72,18 @@
                 mapElement.innerHTML = "Awww snap! Your browser does not support the geolocation feature!";
             }
         }
+
+        /*
+            Set interval for refreshing data
+        */
+        window.setInterval(function(){geoLocate();},3000);
         /*
             Displays the user position
          */
         function showPosition(position){
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
-			
+
 			// send AJAX request to save position in the database
 			var pos = { 'lat': latitude, 'lng': longitude };
 			$.post('../business/ajax.position.php', pos, function (data) {
@@ -94,7 +103,7 @@
 			
             mapElement.style.height = '400px';
             latlon = new google.maps.LatLng(latitude, longitude);
-			
+
             var mapOptions = {
                 center: latlon,
                 zoom: 14,
@@ -102,7 +111,10 @@
                 mapTypeControl: false,
                 navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
             };
-            var map = new google.maps.Map(mapElement, mapOptions);
+            if(!mapExists){
+                var map = new google.maps.Map(mapElement, mapOptions);
+                mapExists = true;
+            }
             var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
         }
 
