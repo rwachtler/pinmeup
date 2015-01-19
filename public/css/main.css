@@ -14,6 +14,7 @@ body {
 div.header h1 {
   text-align: center;
   font-family: 'Pacifico', cursive;
+  font-size: 48px;
 }
 div.content h1 {
   text-align: center;
@@ -36,4 +37,7 @@ div.content .row {
   div.content .row {
     padding-right: 0px;
   }
+}
+span {
+  font-size: 48px;
 }

@@ -1,3 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 # IGNORE data_access.php
 /data_access/data_access.php
+
+#IGNORE Markers
+/public/xml/markers.xml

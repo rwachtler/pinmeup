@@ -9,19 +9,19 @@
 <head>
     <title>Pin Me Up!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/public/css/normalize-css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/mea-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/animation-css/animations.min.css"
-    <link rel="stylesheet" type="text/css" href="/public/css/main.css">
-    <script src="/public/components/jquery/jquery.js"></script>
-    <script src="/public/components/bootstrap/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../public/css/normalize-css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/mea-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/animation-css/animations.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/main.css">
+    <script src="../public/components/jquery/jquery.js"></script>
+    <script src="../public/components/bootstrap/bootstrap.js"></script>
 </head>
 
     <body>
     <div class="header row">
         <div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <h1>Pin Me Up! <span class="mea-icon-pin"></span></h1>
+            <h1>Pin Me Up! <span class="pulse mea-icon-pin"></span></h1>
         </div>
     </div>
     <div class="content row">
@@ -32,7 +32,7 @@
 				<div class="row">
 					<div class="table-responsive" id="facts">
 						<?php
-							include('/business/business.php');
+							include('../business/business.php');
 						
 							$business = new PinMeUp();
 							
